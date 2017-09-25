@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+if (is_file($autoload = __DIR__ . '/../vendor/autoload.php')) {
+    require($autoload);
+} else {
+    fwrite(STDERR, 'No autoload found');
+    exit(1);
+}
+
+if (is_file($bootstrap = __DIR__ . '/../bootstrap/app.php')) {
+    (new \PaulDam\BeersCli\Console\Application(require($bootstrap)))->run();
+} else {
+    fwrite(STDERR, 'No bootstrap found.');
+}

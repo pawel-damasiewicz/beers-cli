@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Beers</title>
+    </head>
+    <body>
+        <ul>
+            {% for beer in beers %}
+            <li>
+                <ul>
+                    <li>
+                        Name: {{ beer.getName() }}
+                    </li>
+                    <li>
+                        Description: {{ beer.getDescription() }}
+                    </li>
+                    <li>
+                        Labels: 
+                        <ul>
+                            {% for label in beer.getLabels() %}
+                            <li>
+                                <img alt="" src="{{ label.getUrl() }}"/>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

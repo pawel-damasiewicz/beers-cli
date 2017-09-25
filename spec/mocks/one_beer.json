@@ -1,0 +1,18 @@
+{
+  "currentPage": 1,
+  "numberOfPages": 3,
+  "totalResults": 107,
+  "data": [
+    {
+      "id": "xbn6X9",
+      "name": "2XIBA",
+      "description": "A dark, malty India Black Ale with a huge hop profile presenting itself through roasted malts. ",
+      "labels": {
+        "icon": "https://s3.amazonaws.com/brewerydbapi/beer/xbn6X9/upload_i7QWM4-icon.png",
+        "medium": "https://s3.amazonaws.com/brewerydbapi/beer/xbn6X9/upload_i7QWM4-medium.png",
+        "large": "https://s3.amazonaws.com/brewerydbapi/beer/xbn6X9/upload_i7QWM4-large.png"
+      }
+    }
+  ],
+  "status": "success"
+}

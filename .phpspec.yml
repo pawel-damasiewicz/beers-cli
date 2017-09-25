@@ -1,0 +1,4 @@
+suites:
+  beers_cli_suite:
+    namespace: PaulDam\BeersCli
+    psr4_prefix: PaulDam\BeersCli

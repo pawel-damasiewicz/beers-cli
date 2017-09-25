@@ -1,0 +1,15 @@
+<beers>
+  {% for beer in beers %}
+  <beer id="{{ beer.getId() }}">
+    <name>{{ beer.getName() }}</name>
+    <description>{{ beer.getDescription() }}</description>
+    <labels>
+      {% for label in beer.getLabels() %}
+      <label>
+        <url>{{ label.getUrl() }} </url>
+      </label>
+      {% endfor %}
+    </labels>
+  </beer>
+  {% endfor %}
+</beers>
