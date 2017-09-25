@@ -4,9 +4,12 @@
 
 ## Requirements
 
-- Docker + docker-compose
+- Php 7.1
+- Composer
 
 ## Usage
+
+`bin/beers-cli --help`
 
 ## TODO
 
