@@ -7,5 +7,5 @@ abstract class RendererAbstract implements BeerRendererInterface
         $this->writer = $writer;
     }
 
-    public abstract function render(BeerCollection $beers): string;
+    abstract public function render(BeerCollection $beers): string;
 }
