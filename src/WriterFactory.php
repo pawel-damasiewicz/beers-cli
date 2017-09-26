@@ -4,8 +4,8 @@ class WriterFactory
 {
     public function build($format, $storagePath)
     {
-        return (new FileWriter())
-            ->withFilename('out.' . $format)
-            ->withStoragePath($storagePath);
+        $path = sprintf('%s/out.%s', $storagePath, $format);
+
+        return (new FileWriter($path));
     }
 }
