@@ -34,7 +34,7 @@ $container->add('config.httpClient', function () use ($container, $config) {
     return $config;
 });
 
-$container->add('config.climate', function () use ($config){
+$container->add('config.climate', function () use ($config) {
     return $config['climate'];
 });
 
