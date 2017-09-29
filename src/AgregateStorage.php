@@ -7,7 +7,7 @@ class AgregateStorage
         $this->storages = $storages;
     }
 
-    public function save(BeerCollection $beers)
+    public function save(BeerCollection $beers): void
     {
         foreach ($this->storages as $storage) {
             $storage->save($beers);
