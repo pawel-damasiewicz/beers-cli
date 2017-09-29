@@ -1,0 +1,6 @@
+language: php
+php:
+  - '7.1'
+
+install: composer install
+script: ./bin/phpspec run --no-code-generation -n --no-ansi --format=pretty
