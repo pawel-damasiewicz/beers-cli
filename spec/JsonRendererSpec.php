@@ -14,12 +14,6 @@ class JsonRendererSpec extends ObjectBehavior
         $this->shouldHaveType(JsonRenderer::class);
     }
 
-    function it_does_return_json_string_for_aray_data()
-    {
-        $data = ['some' => 'data'];
-        $this->render($data)->shouldBe('{"some":"data"}');
-    }
-
     function it_does_render_collection_as_json()
     {
         $data = new BeerCollection([]);

@@ -15,8 +15,7 @@ class GuzzleBeerRepositorySpec extends ObjectBehavior
 {
     function let(Client $client, BeerCollectionBuilder $builder)
     {
-        $config = [];
-        $this->beConstructedWith($client, $builder, $config);
+        $this->beConstructedWith($client, $builder, []);
     }
 
     function it_is_initializable()
@@ -26,7 +25,7 @@ class GuzzleBeerRepositorySpec extends ObjectBehavior
 
     function it_does_return_beer_collection($client, $builder)
     {
-        $client->request('GET', '/beers', [])
+        $client->request('GET', 'beers', ['query' => ['glasswareId' => []]])
             ->willReturn(new Response(200, [], '{"test":"data"}'))
             ->shouldBeCalled();
 
