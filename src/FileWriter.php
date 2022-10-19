@@ -1,5 +1,7 @@
 
-<?php namespace PaulDam\BeersCli;
+<?php
+
+namespace PaulDam\BeersCli;
 
 class FileWriter implements WriterInterface
 {

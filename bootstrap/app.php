@@ -3,15 +3,15 @@
 use PaulDam\BeersCli;
 
 /**
- * Instantiate container
+ * Instantiate container.
  */
-$container = new League\Container\Container;
+$container = new League\Container\Container();
 
 /**
- * Register configuration for services
+ * Register configuration for services.
  */
-if (is_file($config = __DIR__ . '/../config/beersdb.php')) {
-    $config = require($config);
+if (is_file($config = __DIR__.'/../config/beersdb.php')) {
+    $config = require $config;
 } else {
     fwrite(STDERR, 'Configuration file not found.');
     exit(1);
@@ -39,7 +39,7 @@ $container->add('config.climate', function () use ($config) {
 });
 
 /**
- * Register services
+ * Register services.
  */
 $container->add(\GuzzleHttp\HandlerStack::class, function () {
     $handler = new \GuzzleHttp\Handler\CurlHandler();
@@ -110,6 +110,7 @@ $container->add(BeersCli\StorageFactory::class)
 
 $container->add('storage.xml', function () use ($container) {
     $factory = $container->get(BeersCli\StorageFactory::class);
+
     return $factory->build(
         'xml',
         $container->get('config.storage.path')
@@ -118,6 +119,7 @@ $container->add('storage.xml', function () use ($container) {
 
 $container->add('storage.html', function () use ($container) {
     $factory = $container->get(BeersCli\StorageFactory::class);
+
     return $factory->build(
         'html',
         $container->get('config.storage.path')
@@ -126,6 +128,7 @@ $container->add('storage.html', function () use ($container) {
 
 $container->add('storage.json', function () use ($container) {
     $factory = $container->get(BeersCli\StorageFactory::class);
+
     return $factory->build(
         'json',
         $container->get('config.storage.path')
@@ -134,6 +137,7 @@ $container->add('storage.json', function () use ($container) {
 
 $container->add('storage.all', function () use ($container) {
     $factory = $container->get(BeersCli\StorageFactory::class);
+
     return $factory->build(
         'all',
         $container->get('config.storage.path')
@@ -141,6 +145,6 @@ $container->add('storage.all', function () use ($container) {
 });
 
 /**
- * Return container
+ * Return container.
  */
 return $container;

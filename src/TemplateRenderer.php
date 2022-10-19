@@ -1,6 +1,8 @@
-<?php namespace PaulDam\BeersCli;
+<?php
 
-use \Twig_Environment;
+namespace PaulDam\BeersCli;
+
+use Twig_Environment;
 
 class TemplateRenderer implements BeerRendererInterface
 {

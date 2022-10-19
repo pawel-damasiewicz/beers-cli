@@ -1,10 +1,12 @@
-<?php namespace PaulDam\BeersCli;
+<?php
+
+namespace PaulDam\BeersCli;
 
 class RendererFactory
 {
     const FORMATS = [
         'json' => JsonRenderer::class,
-        'xml' => 'renderer.xml',
+        'xml'  => 'renderer.xml',
         'html' => 'renderer.html',
     ];
 
@@ -20,7 +22,7 @@ class RendererFactory
         if ((!isset($formats[$format]))
             || !$this->container->has($formats[$format])
         ) {
-            throw new \InvalidArgumentException('Unsupported format ' . $format . '.');
+            throw new \InvalidArgumentException('Unsupported format '.$format.'.');
         }
 
         return $this->container->get($formats[$format]);

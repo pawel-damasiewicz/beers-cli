@@ -1,31 +1,33 @@
-<?php namespace PaulDam\BeersCli;
+<?php
 
-use PaulDam\BeersCli\BeerCollectionBuilder as Builder;
+namespace PaulDam\BeersCli;
+
 use GuzzleHttp\Client;
+use PaulDam\BeersCli\BeerCollectionBuilder as Builder;
 
 class GuzzleBeerRepository implements BeerRepositoryInterface
 {
     /**
-     * @var Client $httpClient
+     * @var Client
      */
     private $httpClient;
 
     /**
-     * @var array $config
+     * @var array
      */
     private $config = [
         'request_options' => [
             'query' => [
                 'glasswareId' => [],
             ],
-        ]
+        ],
     ];
 
     /**
-     * Inject http client as collaborator and config
+     * Inject http client as collaborator and config.
      *
      * @param Client $httpClient
-     * @param array $config
+     * @param array  $config
      */
     public function __construct(
         Client $httpClient,

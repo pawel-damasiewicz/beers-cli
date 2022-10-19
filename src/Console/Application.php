@@ -1,17 +1,15 @@
-<?php namespace PaulDam\BeersCli\Console;
+<?php
+
+namespace PaulDam\BeersCli\Console;
 
 use PaulDam\BeersCli\GuzzleBeerRepository;
-use PaulDam\BeersCli\BeerRendererInterface;
-use PaulDam\BeersCli\HtmlRenderer;
-use PaulDam\BeersCli\WriterInterface;
-use PaulDam\BeersCli\RendererFactory;
 
 class Application
 {
     private $container;
 
     /**
-     * Inject container as collaborator
+     * Inject container as collaborator.
      */
     public function __construct($container)
     {
@@ -24,10 +22,10 @@ class Application
 
         $climate->arguments->add([
             'output' => [
-                'prefix' => 'o',
-                'longPrefix' => 'output',
-                'description' => 'Sets output storage path',
-                'defaultValue' => __DIR__ . '/../../storage',
+                'prefix'       => 'o',
+                'longPrefix'   => 'output',
+                'description'  => 'Sets output storage path',
+                'defaultValue' => __DIR__.'/../../storage',
             ],
             'help' => [
                 'longPrefix'  => 'help',
@@ -35,9 +33,9 @@ class Application
                 'noValue'     => true,
             ],
             'format' => [
-                'prefix' => 'f',
-                'longPrefix' => 'format',
-                'description' => 'Format of output',
+                'prefix'       => 'f',
+                'longPrefix'   => 'format',
+                'description'  => 'Format of output',
                 'defaultValue' => 'all',
             ],
         ]);
@@ -62,7 +60,7 @@ class Application
 
         $format = $climate->arguments->get('format');
 
-        $storage = $this->container->get('storage.' . $format);
+        $storage = $this->container->get('storage.'.$format);
 
         $storage->save($beers);
     }
