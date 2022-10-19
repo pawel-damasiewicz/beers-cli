@@ -1,8 +1,10 @@
-<?php namespace PaulDam\BeersCli;
+<?php
+
+namespace PaulDam\BeersCli;
 
 abstract class CollectionAbstract extends \ArrayIterator implements \JsonSerializable
 {
-    protected $elementType = \StdClass::class;
+    protected $elementType = \stdClass::class;
 
     public function __construct(array $items, $flags = 0)
     {

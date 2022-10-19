@@ -1,4 +1,6 @@
-<?php namespace PaulDam\BeersCli;
+<?php
+
+namespace PaulDam\BeersCli;
 
 class WriterFactory
 {
@@ -6,6 +8,6 @@ class WriterFactory
     {
         $path = sprintf('%s/out.%s', $storagePath, $format);
 
-        return (new FileWriter($path));
+        return new FileWriter($path);
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace PaulDam\BeersCli;
+<?php
+
+namespace PaulDam\BeersCli;
 
 abstract class LabelAbstract implements \JsonSerializable
 {

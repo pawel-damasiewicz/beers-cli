@@ -7,11 +7,11 @@ return [
     'request_options' => [
         'query' => [
             'format' => 'json',
-            'key' => get_env('BREWERYDB_KEY'),
+            'key'    => get_env('BREWERYDB_KEY'),
         ],
     ],
     'twig' => [
-        'templatesPath' => __DIR__ . '/../templates',
-        'cache' => __DIR__ . '/../storage/templates',
+        'templatesPath' => __DIR__.'/../templates',
+        'cache'         => __DIR__.'/../storage/templates',
     ],
 ];

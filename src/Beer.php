@@ -1,19 +1,21 @@
-<?php namespace PaulDam\BeersCli;
+<?php
+
+namespace PaulDam\BeersCli;
 
 class Beer implements \JsonSerializable
 {
     /**
-     * @var string $name
+     * @var string
      */
     private $name;
 
     /**
-     * @var string $description
+     * @var string
      */
     private $description;
 
     /**
-     * @var LabelCollection $labels
+     * @var LabelCollection
      */
     private $labels;
 
@@ -53,10 +55,10 @@ class Beer implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'id' => $this->getId(),
-            'name' => $this->getName(),
+            'id'          => $this->getId(),
+            'name'        => $this->getName(),
             'description' => $this->getDescription(),
-            'labels' => json_encode($this->getLabels()),
+            'labels'      => json_encode($this->getLabels()),
         ];
     }
 }

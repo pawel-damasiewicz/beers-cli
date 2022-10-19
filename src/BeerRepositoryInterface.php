@@ -1,16 +1,18 @@
-<?php namespace PaulDam\BeersCli;
+<?php
+
+namespace PaulDam\BeersCli;
 
 interface BeerRepositoryInterface
 {
     /**
-     * Get collection of Beers
+     * Get collection of Beers.
      *
      * @return BeerCollection
      */
     public function getBeers(): BeerCollection;
 
     /**
-     * Set filter for glasswareId
+     * Set filter for glasswareId.
      *
      * @param int $glasswareId
      *
