@@ -5,21 +5,19 @@ namespace PaulDam\BeersCli;
 class BeerCollectionBuilder
 {
     public function __construct(
-        LabelCollectionBuilder $labelCollectionBuilder
-    ) {
-        $this->labelCollectionBuilder = $labelCollectionBuilder;
-    }
+        private readonly LabelCollectionBuilder $labelCollectionBuilder
+    ) { }
 
-    public function fromData(array $data)
+    public function fromData(array $data): BeerCollection
     {
         $beersArray = array_map(function ($beerData) {
-            $labelsData = isset($beerData['labels']) ? $beerData['labels'] : [];
+            $labelsData = $beerData['labels'] ?? [];
             $labelsData = $labelsData === null ? [] : $labelsData;
 
             return new Beer(
                 $beerData['id'],
                 $beerData['name'],
-                isset($beerData['description']) ? $beerData['description'] : '',
+                $beerData['description'] ?? '',
                 $this->labelCollectionBuilder->fromData($labelsData)
             );
         }, $data['data']);

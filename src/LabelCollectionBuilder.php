@@ -4,12 +4,9 @@ namespace PaulDam\BeersCli;
 
 class LabelCollectionBuilder
 {
-    public function __construct(LabelFactory $labelFactory)
-    {
-        $this->labelFactory = $labelFactory;
-    }
+    public function __construct(private readonly LabelFactory $labelFactory) { }
 
-    public function fromData($labels)
+    public function fromData($labels): LabelCollection
     {
         $labelArray = [];
         foreach ($labels as $name => $url) {

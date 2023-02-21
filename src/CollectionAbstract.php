@@ -4,7 +4,7 @@ namespace PaulDam\BeersCli;
 
 abstract class CollectionAbstract extends \ArrayIterator implements \JsonSerializable
 {
-    protected $elementType = \stdClass::class;
+    protected string $elementType = \stdClass::class;
 
     public function __construct(array $items, $flags = 0)
     {
@@ -22,7 +22,7 @@ abstract class CollectionAbstract extends \ArrayIterator implements \JsonSeriali
         }
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->getArrayCopy();
     }

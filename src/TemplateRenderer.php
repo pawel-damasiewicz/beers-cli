@@ -2,16 +2,22 @@
 
 namespace PaulDam\BeersCli;
 
-use Twig_Environment;
+use  Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class TemplateRenderer implements BeerRendererInterface
 {
-    public function __construct(
-        Twig_Environment $twig
-    ) {
-        $this->twig = $twig;
-    }
+    private string $template;
 
+    public function __construct(private readonly Environment $twig ) { }
+
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function render(BeerCollection $beers): string
     {
         $template = $this->twig->load($this->template);

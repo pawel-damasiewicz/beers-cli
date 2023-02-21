@@ -2,6 +2,9 @@
 
 namespace PaulDam\BeersCli;
 
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+
 class StorageFactory
 {
     const FORMATS = [
@@ -11,14 +14,11 @@ class StorageFactory
     ];
 
     public function __construct(
-        RendererFactory $rendererFactory,
-        WriterFactory $writerFactory
-    ) {
-        $this->rendererFactory = $rendererFactory;
-        $this->writerFactory = $writerFactory;
-    }
+        private readonly RendererFactory $rendererFactory,
+        private readonly WriterFactory $writerFactory
+    ) { }
 
-    public function build($format, $storagePath)
+    public function build($format, $storagePath): AggregateStorage|Storage
     {
         if ($format === 'all') {
             $storages = [];
@@ -27,13 +27,17 @@ class StorageFactory
                 $storages[] = $this->buildStorage($format, $storagePath);
             }
 
-            return $this->buildAgregate($storages);
+            return $this->buildAggregate($storages);
         }
 
         return $this->buildStorage($format, $storagePath);
     }
 
-    private function buildStorage($format, $storagePath)
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    private function buildStorage($format, $storagePath): Storage
     {
         $renderer = $this->rendererFactory->build($format);
         $writer = $this->writerFactory->build($format, $storagePath);
@@ -41,8 +45,8 @@ class StorageFactory
         return new Storage($renderer, $writer);
     }
 
-    private function buildAgregate(array $storages)
+    private function buildAggregate(array $storages): AggregateStorage
     {
-        return new AgregateStorage($storages);
+        return new AggregateStorage($storages);
     }
 }

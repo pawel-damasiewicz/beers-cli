@@ -2,6 +2,10 @@
 
 namespace PaulDam\BeersCli;
 
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
+
 class RendererFactory
 {
     const FORMATS = [
@@ -10,11 +14,12 @@ class RendererFactory
         'html' => 'renderer.html',
     ];
 
-    public function __construct($container)
-    {
-        $this->container = $container;
-    }
+    public function __construct(private readonly ContainerInterface $container) { }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function build($format)
     {
         $formats = self::FORMATS;

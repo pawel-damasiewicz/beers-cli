@@ -3,42 +3,37 @@
 namespace PaulDam\BeersCli;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use PaulDam\BeersCli\BeerCollectionBuilder as Builder;
 
 class GuzzleBeerRepository implements BeerRepositoryInterface
 {
     /**
-     * @var Client
-     */
-    private $httpClient;
-
-    /**
-     * @var array
-     */
-    private $config = [
-        'request_options' => [
-            'query' => [
-                'glasswareId' => [],
-            ],
-        ],
-    ];
-
-    /**
      * Inject http client as collaborator and config.
      *
      * @param Client $httpClient
-     * @param array  $config
+     * @param BeerCollectionBuilder $builder
+     * @param array $config
      */
     public function __construct(
-        Client $httpClient,
-        Builder $builder,
-        array $config = []
+        private readonly Client  $httpClient,
+        private readonly Builder $builder,
+        private array            $config = []
     ) {
-        $this->httpClient = $httpClient;
-        $this->builder = $builder;
-        $this->config = array_replace_recursive($this->config, $config);
+        $defaultConfig = [
+            'request_options' => [
+                'query' => [
+                    'glasswareId' => [],
+                ],
+            ],
+        ];
+
+        $this->config = array_replace_recursive($defaultConfig, $config);
     }
 
+    /**
+     * @throws GuzzleException
+     */
     public function getBeers(): BeerCollection
     {
         $response = $this->httpClient->request(

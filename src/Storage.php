@@ -5,14 +5,11 @@ namespace PaulDam\BeersCli;
 class Storage
 {
     public function __construct(
-        BeerRendererInterface $renderer,
-        WriterInterface $writer
-    ) {
-        $this->renderer = $renderer;
-        $this->writer = $writer;
-    }
+        private readonly BeerRendererInterface $renderer,
+        private readonly WriterInterface $writer
+    ) { }
 
-    public function save(BeerCollection $beers)
+    public function save(BeerCollection $beers): void
     {
         $content = $this->renderer->render($beers);
 

@@ -43,29 +43,28 @@ $container->add('config.climate', function () use ($config) {
  */
 $container->add(\GuzzleHttp\HandlerStack::class, function () {
     $handler = new \GuzzleHttp\Handler\CurlHandler();
-    $stack = \GuzzleHttp\HandlerStack::create($handler);
 
-    return $stack;
+    return \GuzzleHttp\HandlerStack::create($handler);
 });
 
 $container->add(\GuzzleHttp\Client::class)
-    ->withArgument('config.httpClient');
+    ->addArgument('config.httpClient');
 
 $container->add(BeersCli\LabelFactory::class, BeersCli\LabelFactory::class);
 
 $container
     ->add(BeersCli\LabelCollectionBuilder::class)
-    ->withArgument(BeersCli\LabelFactory::class);
+    ->addArgument(BeersCli\LabelFactory::class);
 
 $container
     ->add(BeersCli\BeerCollectionBuilder::class)
-    ->withArgument(BeersCli\LabelCollectionBuilder::class);
+    ->addArgument(BeersCli\LabelCollectionBuilder::class);
 
 $container
     ->add(BeersCli\GuzzleBeerRepository::class)
-    ->withArgument(\GuzzleHttp\Client::class)
-    ->withArgument(BeersCli\BeerCollectionBuilder::class)
-    ->withArgument('config.beersdb');
+    ->addArgument(\GuzzleHttp\Client::class)
+    ->addArgument(BeersCli\BeerCollectionBuilder::class)
+    ->addArgument('config.beersdb');
 
 $container->add(
     BeersCli\BeerRepositoryInterface::class,
@@ -73,7 +72,7 @@ $container->add(
 );
 
 $container->add(BeersCli\TemplateRenderer::class)
-    ->withArgument(\Twig_Environment::class);
+    ->addArgument(\Twig\Environment::class);
 
 $container->add(BeersCli\JsonRenderer::class, BeersCli\JsonRenderer::class);
 
@@ -87,12 +86,12 @@ $container->add('renderer.xml', function () use ($container) {
         ->withTemplate('beers.html');
 });
 
-$container->add(\Twig_Environment::class)
-    ->withArgument(\Twig_Loader_Filesystem::class)
-    ->withArgument('config.twig');
+$container->add(\Twig\Environment::class)
+    ->addArgument(\Twig\Loader\FilesystemLoader::class)
+    ->addArgument('config.twig');
 
-$container->add(\Twig_Loader_Filesystem::class)
-    ->withArgument('config.twig.templatesPath');
+$container->add(\Twig\Loader\FilesystemLoader::class)
+    ->addArgument('config.twig.templatesPath');
 
 $container->add(\League\CLImate\CLImate::class);
 
@@ -105,8 +104,8 @@ $container->add(BeersCli\RendererFactory::class, function () use ($container) {
 $container->add(BeersCli\WriterFactory::class, BeersCli\WriterFactory::class);
 
 $container->add(BeersCli\StorageFactory::class)
-    ->withArgument(BeersCli\RendererFactory::class)
-    ->withArgument(BeersCli\WriterFactory::class);
+    ->addArgument(BeersCli\RendererFactory::class)
+    ->addArgument(BeersCli\WriterFactory::class);
 
 $container->add('storage.xml', function () use ($container) {
     $factory = $container->get(BeersCli\StorageFactory::class);

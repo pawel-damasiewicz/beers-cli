@@ -4,28 +4,12 @@ namespace PaulDam\BeersCli;
 
 class Beer implements \JsonSerializable
 {
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $description;
-
-    /**
-     * @var LabelCollection
-     */
-    private $labels;
-
-    public function __construct($id, $name, $description, $labels)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
-        $this->labels = $labels;
-    }
+    public function __construct(
+        private $id,
+        private $name,
+        private $description,
+        private $labels
+    ) { }
 
     public function getId(): string
     {
@@ -52,7 +36,7 @@ class Beer implements \JsonSerializable
         return $this->getId() === $other->getId();
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id'          => $this->getId(),

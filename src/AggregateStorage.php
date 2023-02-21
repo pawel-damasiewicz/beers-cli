@@ -2,12 +2,9 @@
 
 namespace PaulDam\BeersCli;
 
-class AgregateStorage
+class AggregateStorage
 {
-    public function __construct($storages)
-    {
-        $this->storages = $storages;
-    }
+    public function __construct(private $storages) { }
 
     public function save(BeerCollection $beers): void
     {

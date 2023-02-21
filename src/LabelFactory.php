@@ -2,6 +2,8 @@
 
 namespace PaulDam\BeersCli;
 
+use Exception;
+
 class LabelFactory
 {
     const LABEL_LARGE = 'large';
@@ -10,6 +12,9 @@ class LabelFactory
         self::LABEL_LARGE => LargeLabel::class,
     ];
 
+    /**
+     * @throws Exception
+     */
     public function build($name, $url)
     {
         $types = self::LABEL_TYPES;
@@ -20,6 +25,6 @@ class LabelFactory
             return new $class($url);
         }
 
-        throw new \Exception('Unsupported label type.');
+        throw new Exception('Unsupported label type.');
     }
 }

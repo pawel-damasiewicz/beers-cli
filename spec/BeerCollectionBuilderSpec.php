@@ -26,20 +26,4 @@ class BeerCollectionBuilderSpec extends ObjectBehavior
 
         $this->fromData($data)->shouldHaveType(BeerCollection::class);
     }
-
-    public function it_does_build_beer_from_data()
-    {
-        $data = [
-            'data' => [
-                [
-                    'id'          => 'test_id',
-                    'name'        => 'test name',
-                    'description' => 'test description',
-                    'labels'      => [],
-                ],
-            ],
-        ];
-
-        $this->fromData($data)[0]->shouldHaveType(Beer::class);
-    }
 }

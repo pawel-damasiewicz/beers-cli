@@ -7,7 +7,7 @@ return [
     'request_options' => [
         'query' => [
             'format' => 'json',
-            'key'    => get_env('BREWERYDB_KEY'),
+            'key'    => getenv('BREWERYDB_KEY'),
         ],
     ],
     'twig' => [

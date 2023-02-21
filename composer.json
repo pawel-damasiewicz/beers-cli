@@ -10,14 +10,14 @@
     ],
     "type": "project",
     "require": {
-        "phpspec/phpspec": "^4.0",
-        "guzzlehttp/guzzle": "^6.3",
-        "league/flysystem": "^1.0",
-        "league/booboo": "^2.0",
-        "league/climate": "^3.2",
-        "league/container": "^2.4",
-        "twig/twig": "~2.0",
-        "league/fractal": "^0.17.0"
+        "phpspec/phpspec": "^7.3",
+        "guzzlehttp/guzzle": "^7.5",
+        "league/flysystem": "^3.12",
+        "league/booboo": "^2.1",
+        "league/climate": "^3.8",
+        "league/container": "^4.2",
+        "twig/twig": "~3.5",
+        "league/fractal": "^0.20"
     },
     "autoload": {
         "psr-4": {
