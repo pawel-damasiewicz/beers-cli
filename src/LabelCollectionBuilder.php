@@ -4,7 +4,9 @@ namespace PaulDam\BeersCli;
 
 class LabelCollectionBuilder
 {
-    public function __construct(private readonly LabelFactory $labelFactory) { }
+    public function __construct(private readonly LabelFactory $labelFactory)
+    {
+    }
 
     public function fromData($labels): LabelCollection
     {

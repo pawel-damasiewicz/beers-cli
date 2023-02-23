@@ -16,7 +16,8 @@ class StorageFactory
     public function __construct(
         private readonly RendererFactory $rendererFactory,
         private readonly WriterFactory $writerFactory
-    ) { }
+    ) {
+    }
 
     public function build($format, $storagePath): AggregateStorage|Storage
     {

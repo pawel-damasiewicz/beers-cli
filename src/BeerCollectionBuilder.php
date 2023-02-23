@@ -6,7 +6,8 @@ class BeerCollectionBuilder
 {
     public function __construct(
         private readonly LabelCollectionBuilder $labelCollectionBuilder
-    ) { }
+    ) {
+    }
 
     public function fromData(array $data): BeerCollection
     {
