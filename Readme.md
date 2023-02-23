@@ -8,13 +8,8 @@
 
 ## Requirements
 
-- Php 7.1
-- Composer
+- Docker
 
 ## Usage
 
 `bin/beers-cli --help`
-
-## TODO
-
-- [ ] Docker setup
