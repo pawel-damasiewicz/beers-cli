@@ -2,7 +2,6 @@
 
 namespace spec\PaulDam\BeersCli;
 
-use PaulDam\BeersCli\Beer;
 use PaulDam\BeersCli\BeerCollection;
 use PaulDam\BeersCli\BeerCollectionBuilder;
 use PaulDam\BeersCli\LabelCollectionBuilder;

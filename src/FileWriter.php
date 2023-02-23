@@ -9,7 +9,9 @@ use RuntimeException;
  */
 class FileWriter implements WriterInterface
 {
-    public function __construct(private readonly string $path) { }
+    public function __construct(private readonly string $path)
+    {
+    }
 
     public function write(string $content): void
     {

@@ -4,7 +4,9 @@ namespace PaulDam\BeersCli;
 
 abstract class LabelAbstract implements \JsonSerializable
 {
-    public function __construct(private $url) { }
+    public function __construct(private $url)
+    {
+    }
 
     public function getUrl(): string
     {

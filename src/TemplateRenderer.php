@@ -11,7 +11,9 @@ class TemplateRenderer implements BeerRendererInterface
 {
     private string $template;
 
-    public function __construct(private readonly Environment $twig ) { }
+    public function __construct(private readonly Environment $twig)
+    {
+    }
 
     /**
      * @throws SyntaxError

@@ -7,7 +7,8 @@ class Storage
     public function __construct(
         private readonly BeerRendererInterface $renderer,
         private readonly WriterInterface $writer
-    ) { }
+    ) {
+    }
 
     public function save(BeerCollection $beers): void
     {

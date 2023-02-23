@@ -11,14 +11,14 @@ class GuzzleBeerRepository implements BeerRepositoryInterface
     /**
      * Inject http client as collaborator and config.
      *
-     * @param Client $httpClient
+     * @param Client                $httpClient
      * @param BeerCollectionBuilder $builder
-     * @param array $config
+     * @param array                 $config
      */
     public function __construct(
-        private readonly Client  $httpClient,
+        private readonly Client $httpClient,
         private readonly Builder $builder,
-        private array            $config = []
+        private array $config = []
     ) {
         $defaultConfig = [
             'request_options' => [

@@ -14,7 +14,9 @@ class RendererFactory
         'html' => 'renderer.html',
     ];
 
-    public function __construct(private readonly ContainerInterface $container) { }
+    public function __construct(private readonly ContainerInterface $container)
+    {
+    }
 
     /**
      * @throws ContainerExceptionInterface

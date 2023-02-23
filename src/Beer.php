@@ -9,7 +9,8 @@ class Beer implements \JsonSerializable
         private $name,
         private $description,
         private $labels
-    ) { }
+    ) {
+    }
 
     public function getId(): string
     {
