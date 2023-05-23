@@ -1,8 +1,8 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Entity;
 
-use PaulDam\BeersCli\Entity\Beer;
+use PaulDam\BeersCli\Component\CollectionAbstract;
 
 class BeerCollection extends CollectionAbstract
 {

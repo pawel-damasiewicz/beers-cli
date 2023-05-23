@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\PaulDam\BeersCli;
+namespace spec\PaulDam\BeersCli\Value;
 
-use PaulDam\BeersCli\LargeLabel;
+use PaulDam\BeersCli\Value\LargeLabel;
 use PhpSpec\ObjectBehavior;
 
 class LargeLabelSpec extends ObjectBehavior

@@ -1,6 +1,6 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Value;
 
 use Exception;
 

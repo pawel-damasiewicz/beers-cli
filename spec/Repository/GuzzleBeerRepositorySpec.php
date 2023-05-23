@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\PaulDam\BeersCli;
+namespace spec\PaulDam\BeersCli\Repository;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
-use PaulDam\BeersCli\BeerCollection;
-use PaulDam\BeersCli\BeerCollectionBuilder;
-use PaulDam\BeersCli\GuzzleBeerRepository;
+use PaulDam\BeersCli\Entity\BeerCollection;
+use PaulDam\BeersCli\Entity\BeerCollectionBuilder;
+use PaulDam\BeersCli\Repository\GuzzleBeerRepository;
 use PhpSpec\ObjectBehavior;
 
 class GuzzleBeerRepositorySpec extends ObjectBehavior

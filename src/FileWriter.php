@@ -3,6 +3,7 @@
 namespace PaulDam\BeersCli;
 
 use RuntimeException;
+use PaulDam\BeersCli\Component\WriterInterface;
 
 /**
  * @TODO: Replace STD function calls to OOP

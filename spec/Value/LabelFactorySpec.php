@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\PaulDam\BeersCli;
+namespace spec\PaulDam\BeersCli\Value;
 
-use PaulDam\BeersCli\LabelFactory;
-use PaulDam\BeersCli\LargeLabel;
+use PaulDam\BeersCli\Value\LabelFactory;
+use PaulDam\BeersCli\Value\LargeLabel;
 use PhpSpec\ObjectBehavior;
 
 class LabelFactorySpec extends ObjectBehavior

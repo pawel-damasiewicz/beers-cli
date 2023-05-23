@@ -2,7 +2,7 @@
 
 namespace spec\PaulDam\BeersCli;
 
-use PaulDam\BeersCli\BeerCollection;
+use PaulDam\BeersCli\Entity\BeerCollection;
 use PaulDam\BeersCli\JsonRenderer;
 use PhpSpec\ObjectBehavior;
 

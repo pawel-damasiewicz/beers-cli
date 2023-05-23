@@ -1,6 +1,8 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Value;
+
+use PaulDam\BeersCli\Component\CollectionAbstract;
 
 class LabelCollection extends CollectionAbstract
 {

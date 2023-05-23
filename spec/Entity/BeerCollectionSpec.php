@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\PaulDam\BeersCli;
+namespace spec\PaulDam\BeersCli\Entity;
 
 use PaulDam\BeersCli\Entity\Beer;
-use PaulDam\BeersCli\BeerCollection;
+use PaulDam\BeersCli\Entity\BeerCollection;
 use PhpSpec\ObjectBehavior;
 
 class BeerCollectionSpec extends ObjectBehavior

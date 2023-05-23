@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\PaulDam\BeersCli;
+namespace spec\PaulDam\BeersCli\Entity;
 
-use PaulDam\BeersCli\BeerCollection;
-use PaulDam\BeersCli\BeerCollectionBuilder;
-use PaulDam\BeersCli\LabelCollectionBuilder;
+use PaulDam\BeersCli\Entity\BeerCollection;
+use PaulDam\BeersCli\Entity\BeerCollectionBuilder;
+use PaulDam\BeersCli\Value\LabelCollectionBuilder;
 use PhpSpec\ObjectBehavior;
 
 class BeerCollectionBuilderSpec extends ObjectBehavior

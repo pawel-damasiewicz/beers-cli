@@ -1,6 +1,8 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Repository;
+
+use PaulDam\BeersCli\Entity\BeerCollection;
 
 interface BeerRepositoryInterface
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Entity;
+
+use PaulDam\BeersCli\Value\LabelCollectionBuilder;
 
 class BeerCollectionBuilder
 {

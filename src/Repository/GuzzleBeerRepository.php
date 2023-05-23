@@ -1,10 +1,11 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Repository;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use PaulDam\BeersCli\BeerCollectionBuilder as Builder;
+use PaulDam\BeersCli\Entity\BeerCollectionBuilder as Builder;
+use PaulDam\BeersCli\Entity\BeerCollection;
 
 class GuzzleBeerRepository implements BeerRepositoryInterface
 {

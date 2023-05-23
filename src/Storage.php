@@ -2,6 +2,9 @@
 
 namespace PaulDam\BeersCli;
 
+use PaulDam\BeersCli\Component\WriterInterface;
+use PaulDam\BeersCli\Entity\BeerCollection;
+
 class Storage
 {
     public function __construct(
