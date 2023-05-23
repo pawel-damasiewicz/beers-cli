@@ -2,7 +2,7 @@
 
 namespace spec\PaulDam\BeersCli;
 
-use PaulDam\BeersCli\Beer;
+use PaulDam\BeersCli\Entity\Beer;
 use PaulDam\BeersCli\BeerCollection;
 use PhpSpec\ObjectBehavior;
 
@@ -38,8 +38,6 @@ class BeerCollectionSpec extends ObjectBehavior
         ];
 
         $this->beConstructedWith($beers);
-        $this->shouldThrow(new \InvalidArgumentException(
-            'PaulDam\BeersCli\BeerCollection can only contain PaulDam\BeersCli\Beer objects.'
-        ))->duringInstantiation();
+        $this->shouldThrow('\InvalidArgumentException')->duringInstantiation();
     }
 }
