@@ -1,0 +1,11 @@
+data:
+  - name: Foo
+    id: foo-id
+    description: Foo beer
+    labels:
+      large: https://labels.beer/foo-id
+  - name: Bar
+    id: bar-id
+    description: Bar beer
+    labels:
+      large: https://labels.beer/bar-id
