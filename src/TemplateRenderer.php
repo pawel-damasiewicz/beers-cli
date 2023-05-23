@@ -2,11 +2,11 @@
 
 namespace PaulDam\BeersCli;
 
+use PaulDam\BeersCli\Entity\BeerCollection;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
-use PaulDam\BeersCli\Entity\BeerCollection;
 
 class TemplateRenderer implements BeerRendererInterface
 {
