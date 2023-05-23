@@ -24,7 +24,6 @@ class StorageFactory
     public function build(string $format, string $storagePath): StorageInterface
     {
         if ($format === 'all') {
-
             return $this->buildAggregate($storagePath);
         }
 
