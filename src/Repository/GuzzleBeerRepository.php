@@ -4,8 +4,8 @@ namespace PaulDam\BeersCli\Repository;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use PaulDam\BeersCli\Entity\BeerCollectionBuilder as Builder;
 use PaulDam\BeersCli\Entity\BeerCollection;
+use PaulDam\BeersCli\Entity\BeerCollectionBuilder as Builder;
 
 class GuzzleBeerRepository implements BeerRepositoryInterface
 {
