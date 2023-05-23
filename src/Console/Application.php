@@ -2,7 +2,8 @@
 
 namespace PaulDam\BeersCli\Console;
 
-use PaulDam\BeersCli\GuzzleBeerRepository;
+use League\CLImate\CLImate;
+use PaulDam\BeersCli\Repository\BeerRepositoryInterface;
 
 class Application
 {
@@ -18,7 +19,7 @@ class Application
 
     public function run()
     {
-        $climate = $this->container->get(\League\CLImate\CLImate::class);
+        $climate = $this->container->get(CLImate::class);
 
         $climate->arguments->add([
             'output' => [
@@ -54,7 +55,7 @@ class Application
         );
 
         $beers = $this->container
-            ->get(GuzzleBeerRepository::class)
+            ->get(BeerRepositoryInterface::class)
             ->filterByGlasswareId('1')
             ->getBeers();
 
