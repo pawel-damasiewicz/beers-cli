@@ -9,17 +9,17 @@
             <li>
                 <ul>
                     <li>
-                        Name: {{ beer.getName() }}
+                        Name: {{ beer.name }}
                     </li>
                     <li>
-                        Description: {{ beer.getDescription() }}
+                        Description: {{ beer.description }}
                     </li>
                     <li>
                         Labels: 
                         <ul>
-                            {% for label in beer.getLabels() %}
+                            {% for label in beer.labels %}
                             <li>
-                                <img alt="" src="{{ label.getUrl() }}"/>
+                                <img alt="" src="{{ label.url }}"/>
                             </li>
                             {% endfor %}
                         </ul>
