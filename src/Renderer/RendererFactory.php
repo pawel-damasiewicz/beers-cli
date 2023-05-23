@@ -22,7 +22,7 @@ class RendererFactory
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function build($format)
+    public function build(string $format)
     {
         $formats = self::FORMATS;
 

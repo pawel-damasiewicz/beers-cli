@@ -4,7 +4,7 @@ namespace PaulDam\BeersCli\Writer;
 
 class WriterFactory
 {
-    public function build($format, $storagePath): FileWriter
+    public function build(string $format, string $storagePath): FileWriter
     {
         $path = sprintf('%s/out.%s', $storagePath, $format);
 
