@@ -6,7 +6,7 @@ use PaulDam\BeersCli\Component\WriterInterface;
 use PaulDam\BeersCli\Entity\BeerCollection;
 use PaulDam\BeersCli\Renderer\BeerRendererInterface;
 
-class Storage
+class Storage implements StorageInterface
 {
     public function __construct(
         private readonly BeerRendererInterface $renderer,
