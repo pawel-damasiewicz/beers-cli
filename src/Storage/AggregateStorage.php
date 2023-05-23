@@ -4,9 +4,9 @@ namespace PaulDam\BeersCli\Storage;
 
 use PaulDam\BeersCli\Entity\BeerCollection;
 
-class AggregateStorage
+class AggregateStorage implements StorageInterface
 {
-    public function __construct(private $storages)
+    public function __construct(private StorageCollection $storages)
     {
     }
 
