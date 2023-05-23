@@ -50,39 +50,44 @@ $container->add(\GuzzleHttp\HandlerStack::class, function () {
 $container->add(\GuzzleHttp\Client::class)
     ->addArgument('config.httpClient');
 
-$container->add(BeersCli\LabelFactory::class, BeersCli\LabelFactory::class);
+$container->add(BeersCli\Value\LabelFactory::class, BeersCli\Value\LabelFactory::class);
 
 $container
-    ->add(BeersCli\LabelCollectionBuilder::class)
-    ->addArgument(BeersCli\LabelFactory::class);
+    ->add(BeersCli\Value\LabelCollectionBuilder::class)
+    ->addArgument(BeersCli\Value\LabelFactory::class);
 
 $container
-    ->add(BeersCli\BeerCollectionBuilder::class)
-    ->addArgument(BeersCli\LabelCollectionBuilder::class);
+    ->add(BeersCli\Entity\BeerCollectionBuilder::class)
+    ->addArgument(BeersCli\Value\LabelCollectionBuilder::class);
 
 $container
-    ->add(BeersCli\GuzzleBeerRepository::class)
+    ->add(BeersCli\Repository\GuzzleBeerRepository::class)
     ->addArgument(\GuzzleHttp\Client::class)
-    ->addArgument(BeersCli\BeerCollectionBuilder::class)
+    ->addArgument(BeersCli\Entity\BeerCollectionBuilder::class)
     ->addArgument('config.beersdb');
 
+$container->add(BeersCli\Repository\MockBeerRepository::class)
+    ->addArgument(BeersCli\Entity\BeerCollectionBuilder::class);
+
 $container->add(
-    BeersCli\BeerRepositoryInterface::class,
-    BeersCli\GuzzleBeerRepository::class
+    BeersCli\Repository\BeerRepositoryInterface::class,
+    function () use ($container) {
+        return $container->get(BeersCli\Repository\MockBeerRepository::class);
+    }
 );
 
-$container->add(BeersCli\TemplateRenderer::class)
+$container->add(BeersCli\Renderer\TemplateRenderer::class)
     ->addArgument(\Twig\Environment::class);
 
-$container->add(BeersCli\JsonRenderer::class, BeersCli\JsonRenderer::class);
+$container->add(BeersCli\Renderer\JsonRenderer::class, BeersCli\Renderer\JsonRenderer::class);
 
 $container->add('renderer.html', function () use ($container) {
-    return $container->get(BeersCli\TemplateRenderer::class)
+    return $container->get(BeersCli\Renderer\TemplateRenderer::class)
         ->withTemplate('beers.html');
 });
 
 $container->add('renderer.xml', function () use ($container) {
-    return $container->get(BeersCli\TemplateRenderer::class)
+    return $container->get(BeersCli\Renderer\TemplateRenderer::class)
         ->withTemplate('beers.html');
 });
 
@@ -95,20 +100,20 @@ $container->add(\Twig\Loader\FilesystemLoader::class)
 
 $container->add(\League\CLImate\CLImate::class);
 
-$container->add(BeersCli\WriterInterface::class, BeersCli\FileWriter::class);
+$container->add(BeersCli\Component\WriterInterface::class, BeersCli\Writer\FileWriter::class);
 
-$container->add(BeersCli\RendererFactory::class, function () use ($container) {
-    return new BeersCli\RendererFactory($container);
+$container->add(BeersCli\Renderer\RendererFactory::class, function () use ($container) {
+    return new BeersCli\Renderer\RendererFactory($container);
 });
 
-$container->add(BeersCli\WriterFactory::class, BeersCli\WriterFactory::class);
+$container->add(BeersCli\Writer\WriterFactory::class, BeersCli\Writer\WriterFactory::class);
 
-$container->add(BeersCli\StorageFactory::class)
-    ->addArgument(BeersCli\RendererFactory::class)
-    ->addArgument(BeersCli\WriterFactory::class);
+$container->add(BeersCli\Storage\StorageFactory::class)
+    ->addArgument(BeersCli\Renderer\RendererFactory::class)
+    ->addArgument(BeersCli\Writer\WriterFactory::class);
 
 $container->add('storage.xml', function () use ($container) {
-    $factory = $container->get(BeersCli\StorageFactory::class);
+    $factory = $container->get(BeersCli\Storage\StorageFactory::class);
 
     return $factory->build(
         'xml',
@@ -117,7 +122,7 @@ $container->add('storage.xml', function () use ($container) {
 });
 
 $container->add('storage.html', function () use ($container) {
-    $factory = $container->get(BeersCli\StorageFactory::class);
+    $factory = $container->get(BeersCli\Storage\StorageFactory::class);
 
     return $factory->build(
         'html',
@@ -126,7 +131,7 @@ $container->add('storage.html', function () use ($container) {
 });
 
 $container->add('storage.json', function () use ($container) {
-    $factory = $container->get(BeersCli\StorageFactory::class);
+    $factory = $container->get(BeersCli\Storage\StorageFactory::class);
 
     return $factory->build(
         'json',
@@ -135,7 +140,7 @@ $container->add('storage.json', function () use ($container) {
 });
 
 $container->add('storage.all', function () use ($container) {
-    $factory = $container->get(BeersCli\StorageFactory::class);
+    $factory = $container->get(BeersCli\Storage\StorageFactory::class);
 
     return $factory->build(
         'all',
