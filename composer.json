@@ -1,7 +1,7 @@
 {
     "name": "paul-dam/beers-cli",
     "description": "CLI for Beers DB",
-    "license": "MIT License",
+    "license": "MIT",
     "authors": [
         {
             "name": "Paweł Damasiewicz",
@@ -27,7 +27,7 @@
     "config": {
         "bin-dir": "bin"
     },
-    "bin-dir": "bin",
+    "bin": "bin",
     "minimum-stability": "dev",
     "scripts": {
         "test": "phpspec run"
