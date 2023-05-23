@@ -9,13 +9,6 @@ use PaulDam\BeersCli\Entity\BeerCollectionBuilder as Builder;
 
 class GuzzleBeerRepository implements BeerRepositoryInterface
 {
-    /**
-     * Inject http client as collaborator and config.
-     *
-     * @param Client                $httpClient
-     * @param BeerCollectionBuilder $builder
-     * @param array                 $config
-     */
     public function __construct(
         private readonly Client $httpClient,
         private readonly Builder $builder,
