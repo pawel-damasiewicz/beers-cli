@@ -26,4 +26,19 @@ abstract class CollectionAbstract extends \ArrayIterator implements \JsonSeriali
     {
         return $this->getArrayCopy();
     }
+
+    public function append(mixed $value): void
+    {
+        $type = $this->elementType;
+
+        if (!($value instanceof $type)) {
+            throw new \InvalidArgumentException(sprintf(
+                '%s can only contain %s objects.',
+                get_class($this),
+                $type
+            ));
+        }
+
+        parent::append($value);
+    }
 }
