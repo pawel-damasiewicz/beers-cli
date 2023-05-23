@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\PaulDam\BeersCli;
+namespace spec\PaulDam\BeersCli\Renderer;
 
 use PaulDam\BeersCli\Entity\BeerCollection;
-use PaulDam\BeersCli\JsonRenderer;
+use PaulDam\BeersCli\Renderer\JsonRenderer;
 use PhpSpec\ObjectBehavior;
 
 class JsonRendererSpec extends ObjectBehavior

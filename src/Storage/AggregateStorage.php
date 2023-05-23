@@ -1,6 +1,8 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Storage;
+
+use PaulDam\BeersCli\Entity\BeerCollection;
 
 class AggregateStorage
 {

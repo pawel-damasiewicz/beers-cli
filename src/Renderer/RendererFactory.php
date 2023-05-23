@@ -1,6 +1,6 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Renderer;
 
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;

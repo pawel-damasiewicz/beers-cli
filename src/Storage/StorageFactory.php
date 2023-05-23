@@ -1,7 +1,9 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Storage;
 
+use PaulDam\BeersCli\Writer\WriterFactory;
+use PaulDam\BeersCli\Renderer\RendererFactory;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 

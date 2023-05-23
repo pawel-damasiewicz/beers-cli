@@ -1,6 +1,6 @@
 <?php
 
-namespace PaulDam\BeersCli;
+namespace PaulDam\BeersCli\Renderer;
 
 use PaulDam\BeersCli\Entity\BeerCollection;
 
