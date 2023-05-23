@@ -2,13 +2,15 @@
 
 namespace PaulDam\BeersCli\Entity;
 
+use PaulDam\BeersCli\Value\LabelCollection;
+
 class Beer implements \JsonSerializable
 {
     public function __construct(
-        private $id,
-        private $name,
-        private $description,
-        private $labels
+        private string $id,
+        private string $name,
+        private string $description,
+        private LabelCollection $labels
     ) {
     }
 

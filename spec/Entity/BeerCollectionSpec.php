@@ -4,6 +4,7 @@ namespace spec\PaulDam\BeersCli\Entity;
 
 use PaulDam\BeersCli\Entity\Beer;
 use PaulDam\BeersCli\Entity\BeerCollection;
+use PaulDam\BeersCli\Value\LabelCollection;
 use PhpSpec\ObjectBehavior;
 
 class BeerCollectionSpec extends ObjectBehavior
@@ -26,7 +27,7 @@ class BeerCollectionSpec extends ObjectBehavior
     public function it_does_check_element_type_during_instantiation()
     {
         $beers = [
-            new Beer('', '', '', []),
+            new Beer('', '', '', new LabelCollection([])),
         ];
 
         $this->beConstructedWith($beers);

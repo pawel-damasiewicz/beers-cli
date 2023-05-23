@@ -3,6 +3,7 @@
 namespace spec\PaulDam\BeersCli\Entity;
 
 use PaulDam\BeersCli\Entity\Beer;
+use PaulDam\BeersCli\Value\LabelCollection;
 use PhpSpec\ObjectBehavior;
 
 class BeerSpec extends ObjectBehavior
@@ -13,7 +14,7 @@ class BeerSpec extends ObjectBehavior
             'test_id',
             'Test name',
             'Test description',
-            []
+            new LabelCollection([])
         );
     }
 
@@ -28,9 +29,14 @@ class BeerSpec extends ObjectBehavior
             'test_id',
             'some name',
             'description',
-            []
+            new LabelCollection([])
         );
 
         $this->equals($otherBeer)->shouldBe(true);
+    }
+
+    public function it_does_have_labels()
+    {
+        $this->getLabels()->shouldHaveType(LabelCollection::class);
     }
 }
