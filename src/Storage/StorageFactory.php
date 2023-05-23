@@ -21,16 +21,11 @@ class StorageFactory
     ) {
     }
 
-    public function build($format, $storagePath): AggregateStorage|Storage
+    public function build(string $format, string $storagePath): StorageInterface
     {
         if ($format === 'all') {
-            $storages = [];
-            $formats = self::FORMATS;
-            foreach ($formats as $format) {
-                $storages[] = $this->buildStorage($format, $storagePath);
-            }
 
-            return $this->buildAggregate($storages);
+            return $this->buildAggregate($storagePath);
         }
 
         return $this->buildStorage($format, $storagePath);
@@ -40,7 +35,7 @@ class StorageFactory
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    private function buildStorage($format, $storagePath): Storage
+    private function buildStorage(string $format, string $storagePath): Storage
     {
         $renderer = $this->rendererFactory->build($format);
         $writer = $this->writerFactory->build($format, $storagePath);
@@ -48,8 +43,14 @@ class StorageFactory
         return new Storage($renderer, $writer);
     }
 
-    private function buildAggregate(array $storages): AggregateStorage
+    private function buildAggregate(string $storagePath): AggregateStorage
     {
+        $storages = new StorageCollection([]);
+        $formats = self::FORMATS;
+        foreach ($formats as $format) {
+            $storages->append($this->buildStorage($format, $storagePath));
+        }
+
         return new AggregateStorage($storages);
     }
 }
