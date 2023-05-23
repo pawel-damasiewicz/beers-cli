@@ -3,8 +3,8 @@
 namespace PaulDam\BeersCli\Storage;
 
 use PaulDam\BeersCli\Component\WriterInterface;
-use PaulDam\BeersCli\Renderer\BeerRendererInterface;
 use PaulDam\BeersCli\Entity\BeerCollection;
+use PaulDam\BeersCli\Renderer\BeerRendererInterface;
 
 class Storage
 {

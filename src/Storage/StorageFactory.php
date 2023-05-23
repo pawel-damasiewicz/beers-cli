@@ -2,8 +2,8 @@
 
 namespace PaulDam\BeersCli\Storage;
 
-use PaulDam\BeersCli\Writer\WriterFactory;
 use PaulDam\BeersCli\Renderer\RendererFactory;
+use PaulDam\BeersCli\Writer\WriterFactory;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
