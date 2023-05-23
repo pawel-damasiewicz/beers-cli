@@ -28,5 +28,8 @@
         "bin-dir": "bin"
     },
     "bin-dir": "bin",
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "scripts": {
+        "test": "phpspec run"
+    }
 }
