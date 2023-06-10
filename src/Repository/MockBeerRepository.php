@@ -14,7 +14,7 @@ class MockBeerRepository implements BeerRepositoryInterface
 
     public function getBeers(): BeerCollection
     {
-        $data = Yaml::parseFile('./storage/mockData.yaml');
+        $data = Yaml::parseFile(__DIR__.'/../../storage/mocks/mockData.yaml');
 
         return $this->builder->fromData($data);
     }
