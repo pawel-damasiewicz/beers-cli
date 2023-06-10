@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Beers</title>
+	</head>
+	<body>
+		<ul class="beer-list">{% for beer in beers ~%}
+      <li class="beer-item" id="{{ "beer-item-#{beer.id}" }}">
+        <ul class="beer-property-list">
+          <li class="beer-name">{{ "Name: #{beer.name}" }}</li>
+          <li class="beer-description">{{ "Description: #{beer.description}" }}</li>
+          <li class="beer-label-container">
+            <h2>Labels:</h2>
+            <ul class="beer-label-list">{% for label in beer.labels ~%}
+                <li class="beer-label-item"><img alt="" src="{{ label.url }}"/></li>
+            {% endfor ~%}</ul>
+          </li>
+        </ul>
+      </li>
+    {% endfor ~%}</ul>
+	</body>
+</html>

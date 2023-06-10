@@ -1,0 +1,12 @@
+<beers>{% for beer in beers ~%}
+  <beer id="{{ beer.id }}">
+    <name>{{ beer.name }}</name>
+    <description>{{ beer.description }}</description>
+    <labels>{% for label in beer.labels ~%}
+      <label>
+        <url>{{ label.url }}
+        </url>
+      </label>
+    {% endfor ~%}</labels>
+  </beer>
+{% endfor ~%}</beers>
