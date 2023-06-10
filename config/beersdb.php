@@ -11,7 +11,7 @@ return [
         ],
     ],
     'twig' => [
-        'templatesPath' => __DIR__.'/../templates',
-        'cache'         => __DIR__.'/../storage/templates',
+        'templatesPath' => __DIR__.'/../templates/twig',
+        'cache'         => __DIR__.'/../storage/templates/twig',
     ],
 ];
