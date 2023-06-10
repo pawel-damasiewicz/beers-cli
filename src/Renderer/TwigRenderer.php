@@ -8,7 +8,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class TemplateRenderer implements BeerRendererInterface
+class TwigRenderer implements BeerRendererInterface
 {
     private string $template;
 
