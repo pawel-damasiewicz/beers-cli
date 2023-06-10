@@ -40,12 +40,9 @@ $container->add('config.climate', function () use ($config) {
 
 /**
  * Register services.
+ *
+ * Http Client - GuzzleHttp.
  */
-
-
- /**
-  * Http Client - GuzzleHttp
-  */
 $container->add(\GuzzleHttp\HandlerStack::class, function () {
     $handler = new \GuzzleHttp\Handler\CurlHandler();
 
@@ -82,23 +79,31 @@ $container->add(
 );
 
 /**
- * Template rendering engines - Twig
+ * Template rendering engines - Twig.
  */
-$container->add(BeersCli\Renderer\TwigRenderer::class)
-    ->addArgument(\Twig\Environment::class);
-
-$container->add(BeersCli\Renderer\JsonRenderer::class, BeersCli\Renderer\JsonRenderer::class);
-
-$container->add(\Twig\Environment::class)
-    ->addArgument(\Twig\Loader\FilesystemLoader::class)
+$container->add(BeersCli\TwigEnvironmentFactory::class)
     ->addArgument('config.twig');
 
-$container->add(\Twig\Loader\FilesystemLoader::class)
-    ->addArgument('config.twig.templatesPath');
+$container->add(BeersCli\Renderer\TwigRenderer::class, function () use ($container) {
+    $factory = $container->get(BeersCli\TwigEnvironmentFactory::class);
+
+    if ($container->get('disable-template-cache')) {
+        $factory->disableCompileCache();
+    }
+
+    $twig = $factory->makeEnvironment();
+
+    return new BeersCli\Renderer\TwigRenderer($twig);
+});
+
+/**
+ * Json rendering engine
+ */
+$container->add(BeersCli\Renderer\JsonRenderer::class, BeersCli\Renderer\JsonRenderer::class);
 
 
 /**
- * Bind concrete renderer to the format
+ * Bind concrete renderer to the format.
  */
 $container->add('renderer.html', function () use ($container) {
     return $container->get(BeersCli\Renderer\TwigRenderer::class)
@@ -111,13 +116,13 @@ $container->add('renderer.xml', function () use ($container) {
 });
 
 /**
- * CLI
+ * CLI manager.
  */
 $container->add(\League\CLImate\CLImate::class);
 
 
 /**
- * Storage, Renderer, Writer
+ * Storage, Renderer, Writer.
  */
 $container->add(BeersCli\Component\WriterInterface::class, BeersCli\Writer\FileWriter::class);
 

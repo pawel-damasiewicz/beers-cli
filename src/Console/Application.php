@@ -4,6 +4,7 @@ namespace PaulDam\BeersCli\Console;
 
 use League\CLImate\CLImate;
 use PaulDam\BeersCli\Repository\BeerRepositoryInterface;
+use PaulDam\BeersCli\TwigEnvironmentFactory;
 
 class Application
 {
@@ -26,7 +27,7 @@ class Application
                 'prefix'       => 'o',
                 'longPrefix'   => 'output',
                 'description'  => 'Sets output storage path',
-                'defaultValue' => __DIR__.'/../../storage',
+                'defaultValue' => __DIR__ . '/../../storage',
             ],
             'help' => [
                 'longPrefix'  => 'help',
@@ -39,6 +40,12 @@ class Application
                 'description'  => 'Format of output',
                 'defaultValue' => 'all',
             ],
+            'disable-template-cache' => [
+                'prefix' => 'dc',
+                'longPrefix' => 'no-template-cache',
+                'description' => 'Disables templates\' engine cache',
+                'defaultValue' => false,
+            ]
         ]);
 
         $climate->arguments->parse();
@@ -54,6 +61,11 @@ class Application
             $climate->arguments->get('output')
         );
 
+        $this->container->add(
+            'disable-template-cache',
+            $climate->arguments->get('disable-template-cache')
+        );
+
         $beers = $this->container
             ->get(BeerRepositoryInterface::class)
             ->filterByGlasswareId('1')
@@ -61,7 +73,7 @@ class Application
 
         $format = $climate->arguments->get('format');
 
-        $storage = $this->container->get('storage.'.$format);
+        $storage = $this->container->get('storage.' . $format);
 
         $storage->save($beers);
     }
