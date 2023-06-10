@@ -41,6 +41,11 @@ $container->add('config.climate', function () use ($config) {
 /**
  * Register services.
  */
+
+
+ /**
+  * Http Client - GuzzleHttp
+  */
 $container->add(\GuzzleHttp\HandlerStack::class, function () {
     $handler = new \GuzzleHttp\Handler\CurlHandler();
 
@@ -76,20 +81,13 @@ $container->add(
     }
 );
 
-$container->add(BeersCli\Renderer\TemplateRenderer::class)
+/**
+ * Template rendering engines - Twig
+ */
+$container->add(BeersCli\Renderer\TwigRenderer::class)
     ->addArgument(\Twig\Environment::class);
 
 $container->add(BeersCli\Renderer\JsonRenderer::class, BeersCli\Renderer\JsonRenderer::class);
-
-$container->add('renderer.html', function () use ($container) {
-    return $container->get(BeersCli\Renderer\TemplateRenderer::class)
-        ->withTemplate('beers.html');
-});
-
-$container->add('renderer.xml', function () use ($container) {
-    return $container->get(BeersCli\Renderer\TemplateRenderer::class)
-        ->withTemplate('beers.html');
-});
 
 $container->add(\Twig\Environment::class)
     ->addArgument(\Twig\Loader\FilesystemLoader::class)
@@ -98,8 +96,29 @@ $container->add(\Twig\Environment::class)
 $container->add(\Twig\Loader\FilesystemLoader::class)
     ->addArgument('config.twig.templatesPath');
 
+
+/**
+ * Bind concrete renderer to the format
+ */
+$container->add('renderer.html', function () use ($container) {
+    return $container->get(BeersCli\Renderer\TwigRenderer::class)
+        ->withTemplate('beers.html.twig');
+});
+
+$container->add('renderer.xml', function () use ($container) {
+    return $container->get(BeersCli\Renderer\TwigRenderer::class)
+        ->withTemplate('beers.xml.twig');
+});
+
+/**
+ * CLI
+ */
 $container->add(\League\CLImate\CLImate::class);
 
+
+/**
+ * Storage, Renderer, Writer
+ */
 $container->add(BeersCli\Component\WriterInterface::class, BeersCli\Writer\FileWriter::class);
 
 $container->add(BeersCli\Renderer\RendererFactory::class, function () use ($container) {
